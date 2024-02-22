@@ -1,0 +1,4 @@
+Suma numerelor este: 27.0
+Media numerelor este: 4.5
+Valoarea minimă este: 2.0
+Valoarea maximă este: 8.0
