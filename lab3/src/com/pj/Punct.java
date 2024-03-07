@@ -1,6 +1,9 @@
 package com.pj;
 
-class Punct {
+import lombok.Data;
+
+@Data
+public class Punct {
     private final int x;
     private final int y;
     public Punct(int x, int y) {

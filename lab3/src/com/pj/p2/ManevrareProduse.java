@@ -4,13 +4,21 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class ManevrareProduse {
     private static List<Produs> produse = new ArrayList<>();
+
+    /**
+     * citim in formatul zi.luna.an
+     * afisam pe ecran tot in form asta
+     * @param numeFisier
+     */
     public static void citesteProduse(String numeFisier) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.M.yyyy");
         try {
             Scanner scanner = new Scanner(new File(numeFisier));
             while (scanner.hasNextLine()) {
@@ -19,7 +27,7 @@ public class ManevrareProduse {
                 String denumire = elemente[0].trim();
                 double pret = Double.parseDouble(elemente[1].trim());
                 int cantitate = Integer.parseInt(elemente[2].trim());
-                LocalDate dataExpirare = LocalDate.parse(elemente[3].trim());
+                LocalDate dataExpirare = LocalDate.parse(elemente[3].trim(), formatter);
                 Produs produs = new Produs(denumire, pret, cantitate, dataExpirare);
                 produse.add(produs);
             }
@@ -28,6 +36,7 @@ public class ManevrareProduse {
             e.printStackTrace();
         }
     }
+
 
     public static void meniu() {
         Scanner scanner = new Scanner(System.in);
@@ -66,9 +75,15 @@ public class ManevrareProduse {
     }
 
     public static void afiseazaProduse() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d.M.yyyy");
+
         System.out.println("Lista de produse:");
         for (Produs produs : produse) {
-            System.out.println(produs);
+            String dataExpirareFormatata = produs.getDataExpirare().format(formatter);
+            System.out.println("Produs: " + produs.getDenumire() +
+                    ", Pret: " + produs.getPret() +
+                    ", Cantitate: " + produs.getCantitate() +
+                    ", Data expirare: " + dataExpirareFormatata);
         }
     }
 
