@@ -1,0 +1,1 @@
+Produs(denumire=Ulei, pret=5.0, cantitate=10, dataExpirare=2024-08-15)
