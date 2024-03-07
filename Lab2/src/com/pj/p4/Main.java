@@ -52,7 +52,22 @@ public class Main {
         }
 
         char firstDigit = cnp.charAt(0);
-        if (firstDigit != '1' && firstDigit != '2') {
+        if (firstDigit != '1' && firstDigit != '2' && firstDigit != '3' && firstDigit != '4' &&
+                firstDigit != '5' && firstDigit != '6' && firstDigit != '7' && firstDigit != '8' &&
+                firstDigit != '9') {
+            return false;
+        }
+
+        int[] controlFactors = {2, 7, 9, 1, 4, 6, 3, 5, 8, 2, 7, 9};
+        int sum = 0;
+        for (int i = 0; i < 12; i++) {
+            sum += Character.getNumericValue(cnp.charAt(i)) * controlFactors[i];
+        }
+        int remainder = sum % 11;
+        int controlDigit = (remainder == 10) ? 1 : remainder;
+
+        int lastDigit = Character.getNumericValue(cnp.charAt(12));
+        if (controlDigit != lastDigit) {
             return false;
         }
 

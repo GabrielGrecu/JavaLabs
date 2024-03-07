@@ -1,6 +1,7 @@
 package com.pj.p4;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 class Person {
     private String name;
@@ -27,34 +28,34 @@ class Person {
         this.cnp = cnp;
     }
 
+    /**
+     * ca si in curs pag 41
+     *
+     * @return
+     */
     public int getAge() {
-        String birthYearStr = cnp.substring(1, 3);
-        int birthYear = Integer.parseInt(birthYearStr);
+        int birthYear = Integer.parseInt(cnp.substring(1, 3));
+        int birthMonth = Integer.parseInt(cnp.substring(3, 5));
+
+        LocalDate birthDate;
+
         int currentYear = LocalDate.now().getYear() % 100;
-        if (birthYear <= currentYear) {
-            return currentYear - birthYear;
+        if (birthYear > currentYear) {
+            birthYear += 1900;
+            birthDate = LocalDate.of(birthYear, birthMonth, 1);
         } else {
-            return currentYear - birthYear + 100;
+            birthYear += 2000;
+            birthDate = LocalDate.of(birthYear, birthMonth, 1);
         }
+
+        LocalDate currentDate = LocalDate.now();
+
+        long years = ChronoUnit.YEARS.between(birthDate, currentDate);
+
+        return (int) years;
     }
 }
 
 
 
 
-//public int getAge() {
-//        int birthYear = Integer.parseInt(cnp.substring(1, 3));
-//        int birthMonth = Integer.parseInt(cnp.substring(3, 5));
-//        int birthDay = Integer.parseInt(cnp.substring(5, 7));
-//
-//        LocalDate currentDate = LocalDate.now();
-//
-//        LocalDate birthDate = LocalDate.of(1900 + birthYear, birthMonth, birthDay);
-//        int age = Period.between(birthDate, currentDate).getYears();
-//
-//        if (currentDate.getMonthValue() < birthMonth || (currentDate.getMonthValue() == birthMonth && currentDate.getDayOfMonth() < birthDay)) {
-//            age--;
-//        }
-//
-//        return age;
-//    }
