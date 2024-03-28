@@ -55,7 +55,3 @@ class Person {
         return (int) years;
     }
 }
-
-
-
-

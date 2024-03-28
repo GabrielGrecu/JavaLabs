@@ -52,9 +52,7 @@ public class Main {
         }
 
         char firstDigit = cnp.charAt(0);
-        if (firstDigit != '1' && firstDigit != '2' && firstDigit != '3' && firstDigit != '4' &&
-                firstDigit != '5' && firstDigit != '6' && firstDigit != '7' && firstDigit != '8' &&
-                firstDigit != '9') {
+        if (!Character.isDigit(firstDigit)) {
             return false;
         }
 
