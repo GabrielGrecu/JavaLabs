@@ -1,0 +1,28 @@
+[ "java.util.HashSet", [ {
+  "@class" : "org.upt.pj.lab7.p2.SetTobe",
+  "tipTobe" : "ELECTRONICE",
+  "nrTobe" : 5,
+  "nrCinele" : 3
+}, {
+  "@class" : "org.upt.pj.lab7.p2.Chitara",
+  "tipChitara" : "CLASICA",
+  "nrCorzi" : 6
+}, {
+  "@class" : "org.upt.pj.lab7.p2.Chitara",
+  "tipChitara" : "ELECTRICA",
+  "nrCorzi" : 7
+}, {
+  "@class" : "org.upt.pj.lab7.p2.SetTobe",
+  "tipTobe" : "ACUSTICE",
+  "nrTobe" : 4,
+  "nrCinele" : 2
+}, {
+  "@class" : "org.upt.pj.lab7.p2.Chitara",
+  "tipChitara" : "ACUSTICA",
+  "nrCorzi" : 6
+}, {
+  "@class" : "org.upt.pj.lab7.p2.SetTobe",
+  "tipTobe" : "ACUSTICE",
+  "nrTobe" : 6,
+  "nrCinele" : 4
+} ] ]
